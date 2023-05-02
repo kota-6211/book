@@ -1,0 +1,12 @@
+<%= image_tag @user.get_profile(100, 100) %>
+<table>
+  <tr>
+    <th>name</th>
+    <td><h3><%= @user.name %></h3></td>
+  </tr>
+  <tr>
+    <th>introduction</th>
+    <td><h3><%= @user.introduction %></h3></td>
+  </tr>
+</table>
+<%= link_to "edit", edit_user_path(current_user.id) %>

@@ -1,0 +1,11 @@
+<h3>editer</h3>
+
+<%= form_with model: @user, url: user_path, method: :patch do |f| %>
+ <p>name</p>
+ <%= f.text_field :name, placeholder:"name" %>
+ <p>introduction</p>
+ <%= f.text_area :introduction, placeholder:"introduction" %>
+ <p>profile</p>
+ <%= f.file_field :profile, placeholder:"profile", accept: "image/*" %>
+ <%= f.submit "end"%>
+<% end %>
