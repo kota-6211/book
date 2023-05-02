@@ -11,33 +11,38 @@
   </head>
 
   <body>
-    <header>
-      <% if user_signed_in? %>
-       <li>
-         <%= link_to "home", user_path(current_user.id) %>
-       </li>
-       <li>
-         <%= link_to "users", users_path %>
-       </li>
-       <li>
-         <%= link_to "books", about_path %>
-       </li>
-       <li>
-         <%= link_to "log out", destroy_user_session_path, method: :delete %>
-       </li>
-      <% else %>
-       <li>
+    <header class="header">
+       <li class="home_botton">
          <%= link_to "home", root_path %>
        </li>
-       <li>
-         <%= link_to "about", about_path %>
-       </li>
-       <li>
-         <%= link_to "sign up", new_user_registration_path %>
-       </li>
-       <li>
-         <%= link_to "sign in", new_user_session_path %>
-       </li>
+      <% if user_signed_in? %>
+      <ul class="link">
+        <li class="header-link">
+          <%= link_to "home", user_path(current_user.id) %>
+        </li>
+        <li class="header-link">
+          <%= link_to "users", users_path %>
+        </li>
+        <li class="header-link">
+          <%= link_to "books", about_path %>
+        </li>
+        <li class="header-link">
+          <%= link_to "log out", destroy_user_session_path, method: :delete %>
+        </li>
+       <% else %>
+        <li class="header-link">
+          <%= link_to "home", root_path %>
+        </li>
+        <li class="header-link">
+          <%= link_to "about", about_path %>
+        </li>
+        <li>
+          <%= link_to "sign up", new_user_registration_path %>
+        </li>
+        <li class="header-link">
+          <%= link_to "sign in", new_user_session_path %>
+        </li>
+      </ul>
       <% end %>
     </header>
     <%= yield %>
