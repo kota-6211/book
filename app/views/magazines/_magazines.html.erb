@@ -1,0 +1,26 @@
+<h2>BOOKS</h2>
+<table class="table">
+  <tr>
+    <th></th>
+    <th>
+      <h4>title</h4>
+    </th>
+    <th>
+      <h4>body</h4>
+    </th>
+  </tr>
+       <% magazines.each do |magazine| %>
+          <tr>
+            <td>
+              <%= link_to magazine_path(magazine) do %>
+               <%= image_tag magazine.user.get_profile(100, 100) %>
+               <% end %>
+            </td>
+            <td>
+              <%= link_to magazine.title, magazine_path(magazine) %> 
+            </td>
+                 
+            <td><%= magazine.body %></td>
+          </tr>
+        <% end %>
+ </table>

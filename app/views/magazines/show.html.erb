@@ -1,0 +1,23 @@
+<div class="container mt-5">
+  <div class="row d-flex justify-content-between">
+    <div class="col-md-3">
+      <%= render "users/user", user: @user %>
+      <%= render "make", magazine: @magazine %>
+    </div>
+
+    <div class="col-8 ml-5">
+    <h3>DETAILE</h3>
+   <table class="table">
+        <tr>
+          <td class="col-1"><%= image_tag @magazines.user.get_profile(100, 100) %></td>
+          <td><%= link_to @magazines.title, magazine_path(@magazines)  %></td>
+          <td><%= @magazines.body %></td>
+          <% if @magazines.user == current_user %>
+           <td><%= link_to "Edit", edit_magazine_path(@magazines) ,class: "btn btn-outline-secondary" %></td>
+           <td><%= link_to "Destroy", magazine_path(@magazines), method: :delete ,class: "btn btn-inline-secondary"%></td>
+          <% end %>
+        </tr>
+     </table>
+    </div>
+  </div>
+</div>

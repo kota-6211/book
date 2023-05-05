@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_one_attached :profile
+  has_many :magazines
 
   def get_profile(width, height)
     unless profile.attached?

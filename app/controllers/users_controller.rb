@@ -2,10 +2,13 @@ class UsersController < ApplicationController
   def index
     @user = User.find_by(id: params[:id])
     @users = User.all
+    @magazine = Magazine.new
   end
 
   def show
     @user = User.find_by(id: params[:id])
+    @magazine = Magazine.new
+    @magazines = @user.magazines
   end
 
   def edit
@@ -16,9 +19,9 @@ class UsersController < ApplicationController
     @user.update(user_params)
     redirect_to user_path(@user.id)
   end
-  
+
   private
-  
+
   def user_params
     params.require(:user).permit(:name, :introduction, :profile)
   end

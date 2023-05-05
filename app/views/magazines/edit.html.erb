@@ -1,21 +1,21 @@
 <div class="container mt-3">
   <div class="row">
     <div class="col-5 mx-auto">
-     <h3>PROFILE</h3>
-       <%= form_with model: @user, url: user_path, method: :patch do |f| %>
+     <h3>Editing Magazine</h3>
+       <%= form_with model: @magazine do |f|%>
        <div class="form-group mt-4">
           <p>NAME</p>
-          <%= f.text_field :name, placeholder:"name"  ,class: "form-control book_title" %>
+          <%= f.text_field :title ,class: "form-control book_title" %>
        </div>  
         <div class="form-group mt-4">
           <p>INTRODUCTION</p>
-          <%= f.text_area :introduction, placeholder:"introduction"  ,class: "form-control book_title" %>
+          <%= f.text_area :body ,class: "form-control book_title" %>
         </div>
         <div class="form-group mt-4">
           <p>PROFILE</p>
           <%= f.file_field :profile, placeholder:"profile", accept: "image/*" , class: "btn btn-outline-secondary" %>
         </div>
-        <%= f.submit "Back", class: "btn btn-outline-dark" %>
+        <%= f.submit "Update Book", class: "btn btn-outline-dark" %>
         <% end %>
     </div>
   </div>
