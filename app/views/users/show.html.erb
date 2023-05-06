@@ -2,6 +2,8 @@
   <div class="row d-flex justify-content-between">
     <div class="col-3">
       <%= render "user", user: @user %>
+      <%= link_to "follow", user_followings_path(@user) %>
+      <%= link_to "follower", user_followers_path(@user) %>
       <%= render "magazines/make", magazine: @magazine %>
     </div>
 
