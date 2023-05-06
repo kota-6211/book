@@ -6,6 +6,9 @@ class User < ApplicationRecord
 
   has_one_attached :profile
   has_many :magazines
+  has_many :comments, dependent: :destroy
+  has_many :favorites, dependent: :destroy
+  
 
   def get_profile(width, height)
     unless profile.attached?

@@ -1,0 +1,9 @@
+<% if magazines.favorited_by?(current_user) %>
+   <%= link_to magazine_favorites_path(magazines), method: :delete do %>
+    <%= magazines.favorites.count %> ♥️
+   <% end %>
+<% else %>
+   <%= link_to magazine_favorites_path(magazines), method: :post do %>
+    <%= magazines.favorites.count %> ♡️
+   <% end %>
+<% end %>

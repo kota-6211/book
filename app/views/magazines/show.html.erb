@@ -5,9 +5,9 @@
       <%= render "make", magazine: @magazine %>
     </div>
 
-    <div class="col-8 ml-5">
-    <h3>DETAILE</h3>
-   <table class="table">
+   <div class="col-8 ml-5">
+     <h3>DETAILE</h3>
+       <table class="table">
         <tr>
           <td class="col-1"><%= image_tag @magazines.user.get_profile(100, 100) %></td>
           <td><%= link_to @magazines.title, magazine_path(@magazines)  %></td>
@@ -16,8 +16,39 @@
            <td><%= link_to "Edit", edit_magazine_path(@magazines) ,class: "btn btn-outline-secondary" %></td>
            <td><%= link_to "Destroy", magazine_path(@magazines), method: :delete ,class: "btn btn-inline-secondary"%></td>
           <% end %>
+          <td><%= render "favorites/favorite", magazines: @magazines %></td>
+          <td><%= @magazines.comments.count %>コメント</td>
         </tr>
      </table>
+        <div>
+          <table>
+           <% @magazines.comments.each do |comment| %>
+              <tr>
+                <td>
+                  <%= link_to magazine_path(@magazines) do %>
+                   <%= image_tag comment.user.get_profile(50, 50) %>
+                   <% end %>
+                </td>
+                <td>
+                  <%= comment.comment %>
+                </td>
+                <td><%= link_to "削除", magazine_comment_path(comment.magazine,comment), method: :delete %></td>
+              </tr>
+            <% end %>
+          </table>
+        </div>
+        <div>
+        <h3 class="mt-5">NEW BOOK</h3>
+          <%= form_with model: [@magazines,@comment] do |f|%>
+           <div class="form-group">
+            <%= f.label :comment %>
+            <%= f.text_area :comment ,class: "form-control book_title" %>
+           </div>
+           <div class="form-group">
+            <%= f.submit "Comment", class: "btn btn-outline-dark"%>
+           </div>
+          <% end %>
+        </div>
     </div>
   </div>
 </div>

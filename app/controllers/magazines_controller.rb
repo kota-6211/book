@@ -8,6 +8,7 @@ class MagazinesController < ApplicationController
     @magazines = Magazine.find_by(id: params[:id])
     @magazine = Magazine.new
     @user = @magazines.user
+    @comment = Comment.new
   end
 
   def create
