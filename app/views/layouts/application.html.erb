@@ -51,6 +51,11 @@
      </div>  
       <% end %>
      </nav>
+     <div class="col-5 mx-auto">
+        <% if user_signed_in? %>
+              <%= render 'layouts/search' %>
+        <% end %>
+      </div>
     </header>
     <%= yield %>
   </body>

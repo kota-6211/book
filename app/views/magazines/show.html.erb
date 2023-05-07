@@ -16,7 +16,9 @@
            <td><%= link_to "Edit", edit_magazine_path(@magazines) ,class: "btn btn-outline-secondary" %></td>
            <td><%= link_to "Destroy", magazine_path(@magazines), method: :delete ,class: "btn btn-inline-secondary"%></td>
           <% end %>
-          <td><%= render "favorites/favorite", magazines: @magazines %></td>
+          <td id="favorite_buttons_<%= @magazines.id %>">
+             <%= render "favorites/favorite", magazines: @magazines %>
+          </td>
           <td><%= @magazines.comments.count %>コメント</td>
         </tr>
      </table>
