@@ -1,16 +1,17 @@
 class CommentsController < ApplicationController
   def create
-    magazine = Magazine.find_by(id: params[:magazine_id])
-    comment = Comment.new(comment_params)
-    comment.user_id = current_user.id
-    comment.magazine_id = magazine.id
-    comment.save
-    redirect_to magazine_path(magazine)
+    @magazines = Magazine.find_by(id: params[:magazine_id])
+    @comment = Comment.new(comment_params)
+    @comment.user_id = current_user.id
+    @comment.magazine_id = @magazines.id
+    @comment.save
   end
   
   def destroy
-    Comment.find_by(id: params[:id]).destroy
-    redirect_to magazine_path(params[:magazine_id])
+    @magazines = Magazine.find_by(id: params[:magazine_id])
+    @comment = Comment.find_by(id: params[:id])
+    @comment.destroy
+    
   end
   
   private

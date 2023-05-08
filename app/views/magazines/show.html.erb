@@ -23,25 +23,13 @@
         </tr>
      </table>
         <div>
-          <table>
-           <% @magazines.comments.each do |comment| %>
-              <tr>
-                <td>
-                  <%= link_to magazine_path(@magazines) do %>
-                   <%= image_tag comment.user.get_profile(50, 50) %>
-                   <% end %>
-                </td>
-                <td>
-                  <%= comment.comment %>
-                </td>
-                <td><%= link_to "削除", magazine_comment_path(comment.magazine,comment), method: :delete %></td>
-              </tr>
-            <% end %>
-          </table>
+            <div id="comments_<%= @magazines.id %>">
+               <%= render "comments/comments", magazines: @magazines %>
+            </div>
         </div>
         <div>
         <h3 class="mt-5">NEW BOOK</h3>
-          <%= form_with model: [@magazines,@comment] do |f|%>
+          <%= form_with model: [@magazines,@comment], local: false do |f|%>
            <div class="form-group">
             <%= f.label :comment %>
             <%= f.text_area :comment ,class: "form-control book_title" %>

@@ -1,0 +1,15 @@
+<table>
+  <% magazines.comments.each do |comment| %>
+    <tr>
+      <td>
+        <%= link_to magazine_path(magazines) do %>
+         <%= image_tag comment.user.get_profile(50, 50) %>
+         <% end %>
+      </td>
+      <td>
+        <%= comment.comment %>
+      </td>
+      <td><%= link_to "削除", magazine_comment_path(comment.magazine,comment), method: :delete, remote: true %></td>
+    </tr>
+  <% end %>
+</table>
